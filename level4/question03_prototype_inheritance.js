@@ -1,37 +1,25 @@
-function Vehicle(make, model, year) {
+function vehicle(make,model,year){
   this.make = make;
   this.model = model;
   this.year = year;
 }
-
-Vehicle.prototype.getInfo = function () {
+vehicle.prototype.getinfo = function () {
   return `${this.year} ${this.make} ${this.model}`;
 };
-
-function Car(make, model, year, doors) {
-  Vehicle.call(this, make, model, year);
+function car(make,model,year,doors){
+  vehicle.call(this, make, model, year);
   this.doors = doors;
 }
-
-Car.prototype = Object.create(Vehicle.prototype);
-Car.prototype.constructor = Car;
-
-const baseVehicle = new Vehicle("Yamaha", "MT-07", 2023);
-console.log("Base Vehicle:");
+car.prototype = Object.create(vehicle.prototype);
+car.prototype.constructor = car;
+const baseVehicle = new vehicle("Toyota", "Camry SE", 2020);
+console.log("base Vehicle:");
 console.log(baseVehicle);
-console.log(`Vehicle Info: ${baseVehicle.getInfo()}`);
-
-const car1 = new Car("Honda", "Civic", 2022, 4);
-const car2 = new Car("Mazda", "MX-5", 2024, 2);
-
+console.log(`Vehicle Info: ${baseVehicle.getinfo()}`);
+const car1 = new car("Honda", "Civic", 2021, 4);
 console.log("\nCar 1:");
 console.log(car1);
-console.log(`Info: ${car1.getInfo()}, Doors: ${car1.doors}`);
-
-console.log("\nCar 2:");
-console.log(car2);
-console.log(`Info: ${car2.getInfo()}, Doors: ${car2.doors}`);
-
+console.log(`Car Info: ${car1.getinfo()}, Doors: ${car1.doors}`);
 console.log("\nMethod Reference Verification:");
-console.log(`Both cars share the same getInfo reference: ${car1.getInfo === car2.getInfo}`);
-console.log(`Method comes from Vehicle prototype: ${car1.getInfo === Vehicle.prototype.getInfo}`);
+console.log(both cars share the same getinfo reference: ${car1.getinfo ===car2.getinfo});
+console.log(`Method comes from vehicle prototype: ${car1.getinfo === vehicle.prototype.getinfo}`);
